@@ -3,7 +3,7 @@
  * GET home page.
  */
 var fs = require('fs');
-//var parseXlsx = require('excel'); 
+var parseXlsx = require('excel'); 
 exports.index = function(req, res){
   res.render('index', { title: 'Libros Electronicos', mensaje:'Genera los archivos de texto solicitados por sunat' });
 };
