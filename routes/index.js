@@ -58,7 +58,7 @@ exports.upload = function(req, res){
                 res.writeHead(200,
                   {
                     'content-type':'text/plain', 
-                    'Content-Length': stat.length  
+                    'Content-Length': stat.size  
                   });
                 var readStream = fs.createReadStream('./uploads/resultado.txt');
                 readStream.pipe(res);
