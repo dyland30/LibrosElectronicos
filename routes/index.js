@@ -47,7 +47,7 @@ exports.upload = function(req, res){
               var linea ="";
               linea = data[i].join("|");
               console.log(linea);
-
+            }
 				});
   				res.render('index', { title: 'Libros Electronicos', mensaje:'se cargo el archivo '+nombre });
   			
