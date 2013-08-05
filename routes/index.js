@@ -60,6 +60,7 @@ exports.upload = function(req, res){
                     'content-type':'text/plain', 
                     'Content-Length': stat.size  
                   });
+                res.setHeader('Content-disposition', 'attachment; filename=resultado.txt');
                 var readStream = fs.createReadStream('./uploads/resultado.txt');
                 readStream.pipe(res);
 
