@@ -33,7 +33,7 @@ exports.upload = function(req, res){
   	fs.readFile(path,function(err, data){
   		fs.writeFile(ruta,data,function(err){
   			if(err){
-			    throw err;
+			    //throw err;
   			    res.render('index', { title: 'Libros Electronicos', mensaje:'ha ocurrido un error' });
   			} else{
   				//validar formato de archivo
@@ -43,14 +43,23 @@ exports.upload = function(req, res){
     				// data is an array of arrays
     				console.log("filas: "+data.length);
     				console.log("columnas: "+data[0].length);
+            var cadena = "";
             for (var i = 0; i<data.length; i++) {
-              var linea ="";
-              linea = data[i].join("|");
-              console.log(linea);
+              cadena ="";
+              cadena = data[i].join("|")+"\n";
+             
             }
-				});
-  				res.render('index', { title: 'Libros Electronicos', mensaje:'se cargo el archivo '+nombre });
-  			
+            fs.writeFile("./uploads/resultado.txt",cadena,function(err){
+              if(err){
+                  res.render('index', { title: 'Libros Electronicos', mensaje:'ha ocurrido un error' });
+              } else{
+
+                res.render('index', { title: 'Libros Electronicos', mensaje: "se cargo el archivo" +nombre+" se creo el archivo <a href ='./uploads/resultado.txt'>RESULTADO.TXT</a>" });
+              }
+
+            });
+
+				  });
   			}
   			 
   		});
