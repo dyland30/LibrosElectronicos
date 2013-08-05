@@ -1,0 +1,8 @@
+<% layout('layout') -%>
+<p><%=mensaje%></p>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+<input type="file" name="txtArchivo">
+<input type="submit" value="Cargar">
+</form>
+
