@@ -5,6 +5,7 @@
 var fs = require('fs');
 var parseXlsx = require('excel'); 
 
+
 exports.index = function(req, res){
   res.render('index', { title: 'Libros Electronicos', mensaje:'Genera los archivos de texto solicitados por sunat' });
 };
@@ -53,14 +54,10 @@ exports.upload = function(req, res){
               if(err){
                   res.render('index', { title: 'Libros Electronicos', mensaje:'ha ocurrido un error' });
               } else{
-                 var stat = fs.statSync('./uploads/resultado.txt');
-
-                res.writeHead(200,
-                  {
-                    'content-type':'text/plain', 
-                    'Content-Length': stat.size  
-                  });
+                 
                 res.setHeader('Content-disposition', 'attachment; filename=resultado.txt');
+                res.setHeader('Content-type', 'text/plain');
+
                 var readStream = fs.createReadStream('./uploads/resultado.txt');
                 readStream.pipe(res);
 
