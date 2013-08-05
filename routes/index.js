@@ -43,6 +43,10 @@ exports.upload = function(req, res){
     				// data is an array of arrays
     				console.log("filas: "+data.length);
     				console.log("columnas: "+data[0].length);
+            for (var i = 0; i<data.length; i++) {
+              var linea ="";
+              linea = data[i].join("|");
+              console.log(linea);
 
 				});
   				res.render('index', { title: 'Libros Electronicos', mensaje:'se cargo el archivo '+nombre });
